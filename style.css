@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+:root {
+    --light: #eaecef;
+    --white: #ffffff;
+    --black: #333333;
+    --blue: #2d425f;
+    --transparentblue: #223248dd;
+    --cian: #00acc1;
+    --darkcian: #0097A7;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    background-image: url('./bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+}
+
+.general-wrapper {
+    background-color: var(--transparentblue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--white);
+    text-align: center;
+}
+
+section {
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+}
+
+h2 b {
+    font-weight: 700;
+}
+
+p {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.button {
+    display: inline-block;
+    margin: 30px 15px;
+    padding: 14px;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 0;
+    transition: background .3s ease-in-out;
+}
+
+.button-cian {
+    color: var(--white);
+    background-color: var(--cian);
+}
+
+.button-cian:hover,
+.button-cian:active {
+    background-color: var(--darkcian);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 14px;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+
+    &.delay-level1 {
+        animation-duration: .7s;
+    }
+
+    &.delay-level2 {
+        animation-duration: 1s;
+    }
+
+    &.delay-level3 {
+        animation-duration: 1.5s;
+    }
+}
