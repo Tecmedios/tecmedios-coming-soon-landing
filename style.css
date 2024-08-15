@@ -28,6 +28,10 @@ a {
     text-decoration: none;
 }
 
+img {
+    width: 100%;
+}
+
 .general-wrapper {
     background-color: var(--transparentblue);
     display: flex;
@@ -41,6 +45,11 @@ a {
 
 section {
     padding: 1rem;
+}
+
+.main-logo {
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 
 h1 {
