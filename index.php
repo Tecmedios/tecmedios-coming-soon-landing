@@ -1,3 +1,16 @@
+<?php
+// Import and decode data.json.
+$dataPath = './data.json';
+$jsonContent = file_get_contents($dataPath);
+$data = json_decode($jsonContent, true);
+if (json_last_error() !== JSON_ERROR_NONE) { die('Error deocding the JSON file' . json_last_error_msg()); }
+
+// Organize data for usage.
+$socialLinks = $data['social'];
+$companyEmail = $data['companyEmail'];
+$companyName = $data['companyName'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,30 +21,36 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <title>Tecmedios - En breve estaremos en línea</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title><?php echo $companyName ?> - En breve estaremos en línea</title>
 </head>
 <body>
     <div class="general-wrapper">
         <section>
-            <img src="./logo.png" alt="Logo Tecmedios" class="main-logo fade-in">
+            <img src="./logo.png" alt="Logo" class="main-logo fade-in">
             <h2 class="fade-in delay-level1">Estamos trabajando en<br><b>nuestra web</b></h2>
             <p class="fade-in delay-level2">
                 Por favor, intente más tarde. Estamos trabajando para brindar la mejor experiencia posible.<br>
                 Mientras tanto, puede contactarnos a través de los medios detallados debajo.
             </p>
-            <a href="mailto:contacto@tecmedios.com" class="button button-cian fade-in delay-level3">
+            <a 
+                href="<?php echo $companyEmail ?>" 
+                class="button button-cian fade-in delay-level3">
                 Enviar email
             </a>
             <div class="social-links fade-in delay-level3">
-                <a href="#">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="#">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
+                <?php
+                    foreach($socialLinks as $socialLink) {
+                        echo '
+                            <a 
+                                href="' . htmlspecialchars($socialLink['link']) . '" 
+                                target="_blank" 
+                                title="' . htmlspecialchars($socialLink['title']) . '">
+                                    <i class="' . htmlspecialchars($socialLink['icon']) . '"></i>
+                            </a>
+                        ';
+                    }
+                ?>
             </div>
         </section>
     </div>
